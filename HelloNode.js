@@ -9,11 +9,11 @@ const server = http.createServer((req, res) => {
   //Set the response HTTP header with HTTP status and Content type
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World\n');
+  res.end('["api-buster-3000"]');
 });
 
 //listen for request on port 3000, and as a callback function have the port listened on logged
 server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Server running at http://${hostname}:${port}/api-buster-3000`);
 });
 
