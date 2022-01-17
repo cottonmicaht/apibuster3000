@@ -1,12 +1,30 @@
 const express = require('express')
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Goodbye World!')
+app.use( express.json() );
+
+app.listen(
+   PORT,
+   () => console.log(`it's alive on http://localhost:${PORT}`)
+)
+
+app.get('/job', (req, res) => {
+  res.status(200).send({
+	job: 'Web Dev',
+	description: 'Fun group projects'
+  })
 });
+app.post('/job/:id', (req, res) => {
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`)
+    const { id } = req.params;
+    const { logo } = req.body;
+
+    if (!logo) {
+	res.status(418).send({ message: 'No logo found!' })
+    }
+
+    res.send({
+	job: 'Job with your ${logo} and ID of ${id}',
+    });
 });
-
