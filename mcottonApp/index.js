@@ -1,3 +1,5 @@
+#!/bin/node
+
 const express = require('express')
 const app = express();
 const PORT = 3000;
@@ -11,8 +13,10 @@ app.listen(
 
 app.get('/job', (req, res) => {
   res.status(200).send({
-	job: 'Web Dev',
-	description: 'Fun group projects'
+	job: '🔥🔥🔥 Web Dev 🔥🔥🔥',
+	description: 'Building websites and software applications',
+	qualifications: `Education, professional experience, personal projects`,
+	goal: `Work on fun group projects with a team of people`
   })
 });
 app.post('/job/:id', (req, res) => {
