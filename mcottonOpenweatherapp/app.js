@@ -3,72 +3,52 @@ const app = {
 	document
 	   .getElementById('btnCurrent')
 	   .addEventListener('click', app.fetchWeather);
-	document
-	   .getElementById('btnCurrent')
-	   .addEventListener('click', app.getLocation);
   },
   fetchWeather: (ev) => {
-    //use values from lat/long to fetch weather
-    let lat = document.getElementById('latitude').value;
-    let lon = document.getElementById('longitude').value;
+    //use values from zip/country to fetch weather
+    let zip = document.getElementById('zip code').value; //this could be reworked
+    let appid = document.getElementById('testing').value; //this could be reworked
     let key = 'e8e267f2133f835cf259c78e1e1f1ce0';
-    let lang = 'jp';
-    let units = 'metric';
-    let url = `hettp://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${key}&units=${units]&lang={lang}`;
+    let lang = 'en';
+    let units = 'standard';
+    let url = `api.openweathermap.org/data/2.5/forecase?zip={zip code},{country code}&appid={API key};
     //fetch the weather
     fetch(url)
       .then((resp) => {
 	if (!resp.ok) throw new Error(resp.statusText);
 	return resp.json();
-
       })
       .then((data) => {
 	app.showWeather(data);
       })
       .catch(console.err);
    },
-   getLocation: (ev) => {
-     let opts = {
-	enableHighAccuracy: true,
-	timeout: 1000 * 10, //10 seconds
-	maximumAge: 1000 * 60 * 5, //5 minutes
-      };
-      navigator.geolocation.getCurrentPosition(app.ftw, app.wtf, opts);
-   },
-   ftw: (position) => {
-     //got position
-     document.getElementById('latitude').value =
-       position.coords.latitude.toFixed(2);
-     document.getElemantById('longitude').value =
-       position.coords.longitude.toFixed(2);
-   },
    wtf: (err) => {
-     //geolocation failed
+     //zip code failed
      console.error(err);
    },
    showWeather: (resp) => {
      console.log(resp);
      let row = document.querySelector('.weather.row');
      //clear out the old weather and add the new
-     // row.innerHTML = '';
      row.innerHTML = resp.daily
        .map((day, idx) => {
 	 if (idx <= 2) {
-	   let
-	   let
-	   let
+	   let dt = new Date(day.dt * 1000); //timestamp *1000
+	   let sr = new Date(day.sunrise * 1000).toTimeString();
+	   let ss = new Date(day.sunset * 1000).toTimeString();
 	   return `<div class="col">
 		   <h5 class="card-title p-2">${dt.toDateString()}</h5>
 		     <img
-			src="http://openweathermap.org/img/wn/${
+		       src="http://openweathermap.org/img/wn/${
 			  day.weather[0].icon
-			}@4x.png"
-			class="card-img-top"
-			alt="${day.weather[0].description}"
-		       />
-		       <div class="card-body">
-			  <h3 class="card-title">$day.weather[0].main}</h3>
-			  <p class="card-text">High ${day.temp.max}&deg;C Low ${
+		       }@4x.png"
+		       class="card-img-top"
+		       alt="${day.weather[0].description}"
+		     />
+		     <div class="card-body">
+		       <h3 class="card-title">$day.weather[0].main}</h3>
+		       <p class="card-text">High ${day.temp.max}&deg;C Low ${
 		day.temp.min
 	      }&deg;C</p>
 			  <p class="card-text">High Feels like ${
@@ -94,4 +74,4 @@ const app = {
      },
    };
 
-   app.init(); 
+   app.init();
