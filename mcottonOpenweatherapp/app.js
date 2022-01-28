@@ -1,20 +1,22 @@
+
+
 const app = {
   init: () => {
 
-/*
+
 	document
 	   .getElementById('btnCurrent')
 	   .addEventListener('click', app.fetchWeather);
-*/
+
   },
   fetchWeather: (ev) => {
     //use values from zip/country to fetch weather
     let zip = document.getElementById('zip code').value; //this could be reworked
     let appid = document.getElementById('API Key').value; //this could be reworked
-    let key = 'e8e267f2133f835cf259c78e1e1f1ce0';
+    let key = 'RANDOM-KEY-FOR-SECURITY';
     let lang = 'ja';
-    let units = 'standard';
-    let url = https://api.openweathermap.org/data/2.5/forecase?zip={zip code},{country code}&appid={API key};
+    let units = 'metric';
+    let url = `https://api.openweathermap.org/data/2.5/onecall?zip={zip code}{country code}&appid={key}&lang=${lang}&units=${units}`;
   //fetch the weather
     fetch(url)
       .then((resp) => {
