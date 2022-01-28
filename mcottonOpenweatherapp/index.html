@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
    <head>
 
 <!-- Required meta tags -->
@@ -15,7 +15,7 @@
        crossorigin="anonymous" />
    </head>
 
-<!-- Openweather API tentative code + settings -->
+<!-- Openweather API tentative code -->
 
    <body>
      <div>
@@ -24,28 +24,15 @@
 	</header>
 	<nav class="container">
 	  <div class="row align-items_center py-2">
-	    <div class="input-group col-sm"
-	      <span class="input-group-text" id="basic-addon1">Lat</span>
-	      <input
-		type="text"
-		class="form-control"
-		inputmode="numeric"
-		id="latitude"
-		placeholder="latitude"
-		aria-label="latitude"
-		aria-describedby="bassic-addon1"
-		value=""
-	      />
-	    </div>
 	    <div class=input-group col-sm">
-	      <span class="input-group-text" id="basic-addon1">Lon</span>
+	      <span class="input-group-text" id="basic-addon1">Enter Your ZIP Code</span>
 	      <input
 		type="text"
 		class="form-control"
 		inputmode="numeric"
 		id="longitude"
-		placeholder="longitude"
-		aria-label="longitude"
+		placeholder="ZIP Code"
+		aria-label="ZIP Code"
 		aria-describedby="basic-addon1"
 		value=""
 	      />
@@ -54,7 +41,7 @@
 	  <div class="row align-items-center py-2">
 	    <div class="col-auto me-auto">
 	      <button id="btnGet" type="button" class="btn btn-primary mb-3">
-		Get Weather
+		Get Weather Results
 	      </button>
 	    </div>
 	  </div>
@@ -69,7 +56,7 @@
 	      <div class="card" style="width: 30vw">
 		<h5 class="card-title p-2">Date</h5>
 		<img
-		  src="http://openweathermap.org/img/wn/10d@4x.png"
+		  src="https://openweathermap.org/img/wn/10d@4x.png"
 		  class="card-img-top"
 		  alt="Weather description"
 		/>
@@ -94,12 +81,26 @@
 	     <div class="row align-items-center">
 	       <div class="col">
 		 <img
-		   src="http://openweathermap.org/img/wn/10d.png"
-		   alt="demo icon"
+		   src="https://openweathermap.org/img/wn/10d.png"
+		   alt="demo icon 1"
 		 />
-		 <span>10d@4x.png</span>
+		 <span>10d.png</span>
 	       </div>
-	     </div>
+	       <div class="col">
+		 <img
+		   src="https://openweathermap.org/img/wn/10d@2x.png"
+		   alt="demo icon 2"
+		 />
+		 <span>10d@2x.png</span>
+	      </div>
+	      <div class="col">
+		 <img
+		  src="https://openweathermap.org/img/wn/10d@4x.png"
+		  alt="demo icon 3"
+	         />
+		<span>10d@4x.png</span>
+	       </div>
+	      </div>
 	   </footer>
 	 </div>
 
@@ -110,7 +111,7 @@
 	   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	   crossorigin="anonymous">
 	 </script>
-	 <script src="js/app.js" defer>
+	 <script src="app.js" defer>
 	 </script>
    </body>
 </html>
