@@ -1,22 +1,19 @@
-
-
 const app = {
   init: () => {
 
-
 	document
-	   .getElementById('btnCurrent')
+	   .getElementById('btnGet')
 	   .addEventListener('click', app.fetchWeather);
 
   },
   fetchWeather: (ev) => {
     //use values from zip/country to fetch weather
     let zip = document.getElementById('zip code').value; //this could be reworked
-    let appid = document.getElementById('API Key').value; //this could be reworked
-    let key = 'RANDOM-KEY-FOR-SECURITY';
-    let lang = 'ja';
+  //  let appid = document.getElementById('API Key').value; //this could be reworked
+    let key = 'API-KEY-REDACTED';
+    let lang = 'en';
     let units = 'metric';
-    let url = `https://api.openweathermap.org/data/2.5/onecall?zip={zip code}{country code}&appid={key}&lang=${lang}&units=${units}`;
+    let url = `http://api.openweathermap.org/data/2.5/onecall?zip=${zip}&appid=${key}&lang=${lang}&units=${units}`;
   //fetch the weather
     fetch(url)
       .then((resp) => {
@@ -28,6 +25,10 @@ const app = {
       })
       .catch(console.err);
    },
+
+// ftw: (position) => {
+//	document.getElementById('zip code').value = '28403';
+//},
    wtf: (err) => {
      //zip code failed
      console.error(err);
@@ -75,8 +76,7 @@ const app = {
 	      </div>`;
 	    }
 	  })
-	  .join(' ');
+	  .join('');
      },
    };
-
-   app.init();
+app.init();
