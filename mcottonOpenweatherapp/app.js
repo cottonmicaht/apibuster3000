@@ -1,20 +1,20 @@
 const app = {
   init: () => {
-
 	document
 	   .getElementById('btnGet')
 	   .addEventListener('click', app.fetchWeather);
-
   },
+
   fetchWeather: (ev) => {
-    //use values from zip/country to fetch weather
-    let zip = document.getElementById('zip code').value; //this could be reworked
-  //  let appid = document.getElementById('API Key').value; //this could be reworked
-    let key = '0fc88bfbb81cd951c3b888813a0f74a4';
+	//use values from zip to fetch weather
+
+    let zip = document.getElementById('zip').value;
+    let key = 'API-KEY-REDACTED';
     let lang = 'en';
-    let units = 'metric';
-    let url = `http://api.openweathermap.org/data/2.5/forecast?zip=${zip}&appid=0fc88bfbb81cd951c3b888813a0f74a4`;
-  //fetch the weather
+    let units = 'imperial';
+    let url = `http://api.openweathermap.org/data/2.5/forecast?zip=${zip}&appid=${key}&lang=${lang}&units=${units}`;
+	//fetch the weather
+
     fetch(url)
       .then((resp) => {
 	if (!resp.ok) throw new Error(resp.statusText);
@@ -25,18 +25,11 @@ const app = {
       })
       .catch(console.err);
    },
-
-// ftw: (position) => {
-//	document.getElementById('zip code').value = '28403';
-//},
-   wtf: (err) => {
-     //zip code failed
-     console.error(err);
-   },
    showWeather: (resp) => {
      console.log(resp);
      let row = document.querySelector('.weather.row');
-     //clear out the old weather and add the new
+
+	//clear out the old weather and add the new
      row.innerHTML = resp.daily
 	.map((day, idx) => {
 	 if (idx <= 2) {
@@ -44,9 +37,10 @@ const app = {
 	   let sr = new Date(day.sunrise * 1000).toTimeString();
 	   let ss = new Date(day.sunset * 1000).toTimeString();
 	   return `<div class="col">
+		   <div class="card">
 		   <h5 class="card-title p-2">${dt.toDateString()}</h5>
 		     <img
-		       src="https://openweathermap.org/img/wn/${
+		       src="http://openweathermap.org/img/wn/${
 			  day.weather[0].icon
 		       }@4x.png"
 		       class="card-img-top"
@@ -76,7 +70,7 @@ const app = {
 	      </div>`;
 	    }
 	  })
-	  .join('');
+	  .join(' ');
      },
    };
 app.init();
