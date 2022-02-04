@@ -27,24 +27,43 @@
 	<nav class="container">
 	  <div class="row align-items_center py-2">
 	    <div class=input-group col-sm">
-	      <span class="input-group-text" id="basic-addon1">Enter Your ZIP Code</span>
+	      <span class="input-group-text" id="basic-addon1">Enter Your Latitude</span>
+<br>
 	      <input
 		type="text"
 		class="form-control"
 		inputmode="numeric"
-		id="zip"
-		placeholder="ZIP Code"
-		aria-label="ZIP Code"
+		id="latitude"
+		placeholder="latitude"
+		aria-label="latitude"
 		aria-describedby="basic-addon1"
-		value=""
+		value="34.21"
 	      />
 	    </div>
+<br>
+	    <div>
+		<span class="input-group-text" id="basic-addon1">Enter Your Longitude</span>
+<br>
+		<input
+		  type="test"
+		  class="form-control"
+		  inputmode="numeric"
+		  id="longitude"
+		  placeholder="longitude"
+		  aria-label="longitude"
+		  aria-decribedby="basic-addon1"
+		  value="-77.88"
+		/>
 	  </div>
 	  <div class="row align-items-center py-2">
 	    <div class="col-auto me-auto">
+<br>
 	      <button id="btnGet" type="button" class="btn btn-primary mb-3">
 		Get Weather
 	      </button>
+<!--	      <button id="btnCurrent" type="button" class="btn btn-primary mb-3">
+		Use Current Location
+	      </button> -->
 	    </div>
 	  </div>
         </nav>
@@ -55,7 +74,7 @@
 
 	  <div class="weather row gx-2">
 	    <div class="col">
-	      <div class="card" style="width: 30vw">
+	      <div class="card" style="width:30vw">
 		<h5 class="card-title p-2">Date</h5>
 		<img
 		  src="https://openweathermap.org/img/wn/10d@4x.png"
@@ -79,10 +98,6 @@
 	      </div>
 	     </div>
 	   </main>
-	<footer class="container">
-	  <div class="row align-items-center">
-	    <div class="col">
-	</footer>
       </div>
 <!--  Bootstrap Bundle with popper -->
 

@@ -1,3 +1,15 @@
+@charset "utf-8";
+
+button {
+ background-color: #008CBA;
+ border: non;
+ color: white;
+ padding: 8px 8px;
+ text-align: center;
+ text-decoration: none;
+ display: inline-block;
+ font-size: 12px;
+}
 nav {
-	border-bottom: 3px solid cornflowerblue;
+	border-bottom: 2px solid black;
 }
